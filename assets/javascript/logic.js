@@ -9,25 +9,29 @@
   };
   firebase.initializeApp(config);
 
-// Create firebase database variable 
+// create firebase database variable 
 var database = firebase.database();
 
-// Variables 
+// variables 
 var employeeName;
 var role;
 var startDate;
 var monthlyRate;
 
 
+// button to add employees
 $("#submit").on("click", function(event){
 
    event.preventDefault();
 
+// grabs user input
    employeeName = $("#employee-name").val().trim();
    role = $("#role").val().trim();
    startDate = $("#start-date").val().trim();
    monthlyRate = $("#monthly-rate").val().trim();
 
+
+// uploads employee data to the database
    database.ref().push({
    employeeName: employeeName,
    role: role,
@@ -36,3 +40,15 @@ $("#submit").on("click", function(event){
    });
 
 });
+
+
+database.ref().on("child_added", function(childSnapshot) {
+
+  console.log(childSnapshot.val().employeeName);
+  console.log(childSnapshot.val().role);
+  console.log(childSnapshot.val().startDate);
+  console.log(childSnapshot.val().monthlyRate);
+
+  $("employee-row").append("#")
+});
+
