@@ -63,5 +63,12 @@ database.ref().on("child_added", function(childSnapshot) {
   // row.insertCell(3).innerHTML = childSnapshot.val().monthlyRate;
   console.log(row);
   $("#employee-table tbody").append(row);
+
+  var newDate = moment(childSnapshot.startDate, "mm-dd-yyyy");
+
+  console.log(newDate);
+
 });
+
+
 
