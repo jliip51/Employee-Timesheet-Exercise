@@ -49,6 +49,6 @@ database.ref().on("child_added", function(childSnapshot) {
   console.log(childSnapshot.val().startDate);
   console.log(childSnapshot.val().monthlyRate);
 
+  $("employee-row").append("#")
 });
-
 
