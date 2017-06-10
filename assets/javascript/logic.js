@@ -17,6 +17,9 @@ var employeeName;
 var role;
 var startDate;
 var monthlyRate;
+var rowTr;
+var rowTd;
+var employeeTable;
 
 
 // button to add employees
@@ -49,6 +52,16 @@ database.ref().on("child_added", function(childSnapshot) {
   console.log(childSnapshot.val().startDate);
   console.log(childSnapshot.val().monthlyRate);
 
-  $("employee-row").append("#")
+  var row = $("<tr>");
+
+  row.append($("<td>" + childSnapshot.val().employeeName + "</td>"));
+  row.append($("<td>" + childSnapshot.val().role + "</td>"));
+  row.append($("<td>" + childSnapshot.val().startDate + "</td>"));
+  row.append($("<td>" + childSnapshot.val().monthlyRate + "</td>"));
+  // row.insertCell(1).innerHTML = childSnapshot.val().role;
+  // row.insertCell(2).innerHTML = childSnapshot.val().startDate;
+  // row.insertCell(3).innerHTML = childSnapshot.val().monthlyRate;
+  console.log(row);
+  $("#employee-table tbody").append(row);
 });
 
